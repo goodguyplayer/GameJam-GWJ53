@@ -1,9 +1,12 @@
 extends KinematicBody2D
 
 
-export (int) var speed = 200
-export (int) var gravity = 400
-export (int) var jump_speed = -250
+export (int) var speed = 400
+export (int) var gravity = 800
+export (int) var jump_speed = -400
+
+# -500 -- 2 blocks
+# -400 -- 1 block
 
 var velocity = Vector2()
 var movement = 0
