@@ -5,21 +5,22 @@ var legs = [
 	
 ]
 
-var leg
+var stats
 
 func _ready():
 	pass
 	
 
 func load_legs(value):
-	leg = legs[value].instance()
+	var leg = legs[value].instance()
 	get_parent().call_deferred("add_child", leg)
 	leg.position = self.position
+	stats = leg.get_node("LegsStats")
 
 
-func get_health():
-	return leg.get_node("LegsStats").max_health
-	
-
-func get_heat():
-	return leg.get_node("LegsStats").max_heat_capacity
+#func get_health():
+#	return leg.get_node("LegsStats").max_health
+#
+#
+#func get_heat():
+#	return leg.get_node("LegsStats").max_heat_capacity

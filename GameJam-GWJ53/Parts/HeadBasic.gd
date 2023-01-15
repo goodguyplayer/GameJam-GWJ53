@@ -5,7 +5,7 @@ var heads = [
 	
 ]
 
-var head
+var stats
 
 
 func _ready():
@@ -13,14 +13,15 @@ func _ready():
 	
 
 func load_head(value):
-	head = heads[value].instance()
+	var head = heads[value].instance()
 	get_parent().call_deferred("add_child", head)
 	head.position = self.position
+	stats = head.get_node("HeadStats")
 
-
-func get_health():
-	return head.get_node("HeadStats").max_health
-	
-
-func get_heat():
-	return head.get_node("HeadStats").max_heat_capacity
+#
+#func get_health():
+#	return head.get_node("HeadStats").max_health
+#
+#
+#func get_heat():
+#	return head.get_node("HeadStats").max_heat_capacity

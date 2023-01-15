@@ -44,12 +44,12 @@ func _ready():
 	
 	
 func set_health():
-	var total_health = head.get_health() + torso.get_health() + legs.get_health()
+	var total_health = head.stats.max_health + torso.stats.max_health + legs.stats.max_health
 	playerstats.set_max_health(total_health)
 
 
 func set_heat():
-	var total_heat = head.get_heat() + torso.get_heat() + legs.get_heat()
+	var total_heat = head.stats.max_heat_capacity + torso.stats.max_heat_capacity + legs.stats.max_heat_capacity
 	playerstats.set_max_heat(total_heat)
 	
 
