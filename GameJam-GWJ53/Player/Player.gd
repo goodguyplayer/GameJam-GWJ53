@@ -22,6 +22,10 @@ onready var facing = get_node("Facing")
 onready var bulletorigin = get_node("BulletOrigin")
 onready var timershoot = get_node("TimerShoot")
 onready var playerstats = get_node("PlayerStats")
+onready var head = get_node("Head")
+onready var torso = get_node("Torso")
+onready var legs = get_node("Legs")
+
 
 var velocity = Vector2()
 var movement = 0
@@ -32,9 +36,21 @@ var shootdelay = 0.5
 
 func _ready():
 	playerstats.connect("no_health", self, "queue_free")
-	$Head.load_head(0)
-	$Torso.load_torso(0)
-	$Legs.load_legs(0)
+	head.load_head(0)
+	torso.load_torso(0)
+	legs.load_legs(0)
+	set_health()
+	set_heat()
+	
+	
+func set_health():
+	var total_health = head.get_health() + torso.get_health() + legs.get_health()
+	playerstats.set_max_health(total_health)
+
+
+func set_heat():
+	var total_heat = head.get_heat() + torso.get_heat() + legs.get_heat()
+	playerstats.set_max_heat(total_heat)
 	
 
 func get_input(delta):
