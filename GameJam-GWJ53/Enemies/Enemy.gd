@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 export (float) var turndelay = 3
 export (float) var shootdelay = 1.5
-export var bulletscene = preload("res://Weaponry/Bullet.tscn")
+export var bulletscene = preload("res://Parts/Bullets/Bullet.tscn")
 
 
 onready var timerturn = get_node("TimerTurn")
@@ -49,7 +49,6 @@ func shoot():
 	get_parent().call_deferred("add_child", bullet)
 	bullet.position = bulletorigin.global_position 
 	bullet.bullet_direction = bulletorigin.global_position - global_position
-	bullet.bullet_speed = 100
 
 
 func _on_Hurtbox_area_entered(area):
