@@ -32,6 +32,9 @@ var shootdelay = 0.5
 
 func _ready():
 	playerstats.connect("no_health", self, "queue_free")
+	$Head.load_head(0)
+	$Torso.load_torso(0)
+	$Legs.load_legs(0)
 	
 
 func get_input(delta):
