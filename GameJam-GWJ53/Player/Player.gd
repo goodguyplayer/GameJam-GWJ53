@@ -59,6 +59,7 @@ func _physics_process(delta):
 func shoot():
 	var bullet = bulletscene.instance()
 	get_parent().call_deferred("add_child", bullet)
+	bullet.destroy_on_impact = false
 	bullet.position = bulletorigin.global_position 
 	bullet.bullet_direction = bulletorigin.global_position - global_position
 	bullet.bullet_speed = 1000

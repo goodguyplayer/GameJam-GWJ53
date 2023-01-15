@@ -35,6 +35,8 @@ position = Vector2( 40, 0 )
 
 [node name="Triggerbox-Eye" parent="Facing" instance=ExtResource( 2 )]
 position = Vector2( -40, 0 )
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" parent="Facing/Triggerbox-Eye" index="0"]
 position = Vector2( 168, 0 )
