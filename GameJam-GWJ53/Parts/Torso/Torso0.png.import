@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Torso.png-2b874aee3465cb46cbe565c002205cbf.stex"
+path="res://.import/Torso0.png-ae65d8c334bd1eab203eb9283524b286.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Parts/Torso.png"
-dest_files=[ "res://.import/Torso.png-2b874aee3465cb46cbe565c002205cbf.stex" ]
+source_file="res://Parts/Torso/Torso0.png"
+dest_files=[ "res://.import/Torso0.png-ae65d8c334bd1eab203eb9283524b286.stex" ]
 
 [params]
 
