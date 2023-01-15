@@ -3,8 +3,6 @@ extends KinematicBody2D
 
 export (float) var turndelay = 3
 export (float) var shootdelay = 1.5
-export (float) var shootdistance_x = 10
-export (float) var shootdistance_y = 0
 export var bulletscene = preload("res://Weaponry/Bullet.tscn")
 
 
