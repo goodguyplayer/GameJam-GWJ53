@@ -19,12 +19,12 @@ export (int) var jump_speed = -400
 # -400 -- 1 block
 
 onready var facing = get_node("Facing")
-onready var bulletorigin = get_node("BulletOrigin")
 onready var timershoot = get_node("TimerShoot")
 onready var playerstats = get_node("PlayerStats")
 onready var head = get_node("Head")
 onready var torso = get_node("Torso")
 onready var legs = get_node("Legs")
+onready var weapon = get_node("Weapon")
 
 
 var velocity = Vector2()
@@ -39,6 +39,7 @@ func _ready():
 	head.load_head(0)
 	torso.load_torso(0)
 	legs.load_legs(0)
+	weapon.load_weapon(0)
 	set_health()
 	set_heat()
 	
@@ -71,27 +72,15 @@ func get_input(delta):
 func _physics_process(delta):
 	get_input(delta)
 	if velocity.x > 0:
-		bulletorigin.position = Vector2( 64, 0)
+		facing.position = Vector2( 1, 0)
 	elif velocity.x < 0:
-		bulletorigin.position = Vector2( -64, 0)
+		facing.position = Vector2( -1, 0)
 	
 	if shoot_flag and not is_shooting:
 		is_shooting = true
 		timershoot.start(shootdelay)
-		shoot()
+		weapon.shoot()
 
-
-func shoot():
-	var bullet = bulletscene.instance()
-	get_parent().call_deferred("add_child", bullet)
-	bullet.position = bulletorigin.global_position 
-	bullet.bullet_direction = bulletorigin.global_position - global_position
-	#bullet.bullet_speed = 1000
-	
-
-# Redo - Head, Torso, Legs hurtbox
-#func _on_Hurtbox_area_entered(area):
-#	playerstats.max_health -= 1
 
 
 func _on_TimerShoot_timeout():
