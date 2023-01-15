@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Triggerboxes/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/PlayerStats.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31, 31.5 )
@@ -38,6 +39,9 @@ position = Vector2( 64, 0 )
 
 [node name="TimerShoot" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlayerStats" parent="." instance=ExtResource( 4 )]
+max_health = 4
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="timeout" from="TimerShoot" to="." method="_on_TimerShoot_timeout"]

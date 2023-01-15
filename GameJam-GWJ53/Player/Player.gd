@@ -21,12 +21,18 @@ export (int) var jump_speed = -400
 onready var facing = get_node("Facing")
 onready var bulletorigin = get_node("BulletOrigin")
 onready var timershoot = get_node("TimerShoot")
+onready var playerstats = get_node("PlayerStats")
 
 var velocity = Vector2()
 var movement = 0
 var shoot_flag = false
 var is_shooting = false
 var shootdelay = 0.5
+
+
+func _ready():
+	playerstats.connect("no_health", self, "queue_free")
+	
 
 func get_input(delta):
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -66,7 +72,7 @@ func shoot():
 	
 
 func _on_Hurtbox_area_entered(area):
-	queue_free()
+	playerstats.max_health -= 1
 
 
 func _on_TimerShoot_timeout():
