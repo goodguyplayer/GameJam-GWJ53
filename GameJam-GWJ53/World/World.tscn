@@ -162,7 +162,7 @@ position = Vector2( 992, 520 )
 position = Vector2( 608, 472 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 456, 416 )
+position = Vector2( 192, 184 )
 
 [node name="Tile" parent="." instance=ExtResource( 1 )]
 position = Vector2( 288, 504 )
@@ -181,6 +181,15 @@ position = Vector2( 160, 376 )
 
 [node name="Tile6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 96, 376 )
+
+[node name="Tile10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 440 )
+
+[node name="Tile11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 504 )
+
+[node name="Tile12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 504 )
 
 [node name="Tile7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 96, 312 )

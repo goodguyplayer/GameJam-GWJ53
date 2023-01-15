@@ -1,5 +1,12 @@
 extends KinematicBody2D
 
+#####
+# Resources used.:
+
+# Platform Character = https://kidscancode.org/godot_recipes/3.x/2d/platform_character/
+# General details (Collision, layers, related) = https://www.youtube.com/playlist?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
+
+#####
 
 export (int) var speed = 400
 export (int) var gravity = 800
@@ -27,10 +34,5 @@ func _physics_process(delta):
 
 
 
-
-
-
-#####
-# Resources used.:
-
-# Platform Character = https://kidscancode.org/godot_recipes/3.x/2d/platform_character/
+func _on_Hurtbox_area_entered(area):
+	queue_free()

@@ -28,6 +28,9 @@ common/drop_mouse_on_gui_input_disabled=true
 2d_physics/layer_6="EnemyHitbox"
 2d_physics/layer_7="EnemyHurtbox"
 2d_physics/layer_8="EnemyEyeBox"
+2d_physics/layer_9="Bullet"
+2d_physics/layer_10="BulletHitbox"
+2d_physics/layer_11="BulletHurtbox"
 
 [physics]
 
