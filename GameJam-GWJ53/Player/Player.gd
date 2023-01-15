@@ -8,7 +8,7 @@ extends KinematicBody2D
 
 #####
 
-export var bulletscene = preload("res://Parts/Bullets/Bullet.tscn")
+export var bulletscene = preload("res://Parts/Bullets/Bullet0.tscn")
 
 
 export (int) var speed = 400

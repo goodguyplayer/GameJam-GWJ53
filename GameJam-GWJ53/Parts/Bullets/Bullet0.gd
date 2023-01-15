@@ -8,12 +8,14 @@ signal bullet_hit(damage)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if stats.destroy_on_impact:
+			$Hitbox.connect("area_entered", self, "_on_area_entered")
+			
 
 func _physics_process(delta):
-	if stats.bullet_speed == 0:
-		queue_free()
-	bullet_collision_info = move_and_collide(bullet_direction.normalized() * delta * stats.bullet_speed)
-	if bullet_collision_info != null and stats.destroy_on_impact:
-		emit_signal("bullet_hit", stats.bullet_damage)
-		queue_free()
+	move_and_collide(bullet_direction.normalized() * delta * stats.bullet_speed)
+	
+
+func _on_area_entered(_body):
+	emit_signal("bullet_hit", stats.bullet_damage)
+	queue_free()

@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 export (float) var turndelay = 3
 export (float) var shootdelay = 1.5
-export var bulletscene = preload("res://Parts/Bullets/Bullet.tscn")
+export var bulletscene = preload("res://Parts/Bullets/Bullet0.tscn")
 
 
 onready var timerturn = get_node("TimerTurn")
