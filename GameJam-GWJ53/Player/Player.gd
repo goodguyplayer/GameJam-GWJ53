@@ -71,8 +71,9 @@ func shoot():
 	bullet.bullet_speed = 1000
 	
 
-func _on_Hurtbox_area_entered(area):
-	playerstats.max_health -= 1
+# Redo - Head, Torso, Legs hurtbox
+#func _on_Hurtbox_area_entered(area):
+#	playerstats.max_health -= 1
 
 
 func _on_TimerShoot_timeout():
