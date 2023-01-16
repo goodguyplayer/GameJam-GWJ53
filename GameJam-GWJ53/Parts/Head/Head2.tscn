@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Triggerboxes/Hurtbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Parts/Head/HeadStats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Parts/Head/Head1.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Head2" type="Sprite"]
+position = Vector2( 7.15256e-07, 0 )
+scale = Vector2( 0.5, 0.375 )
+texture = ExtResource( 3 )
+
+[node name="HeadStats" parent="." instance=ExtResource( 2 )]
+max_health = 10
+max_heat_capacity = 30
+
+[node name="Hurtbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 8
+collision_mask = 256
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( -1.43051e-06, 0 )
+shape = SubResource( 1 )
+
+[editable path="Hurtbox"]

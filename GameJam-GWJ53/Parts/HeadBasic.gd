@@ -1,7 +1,9 @@
 extends Node2D
 
 var heads = [
-	preload("res://Parts/Head/Head0.tscn"),
+	("res://Parts/Head/Head0.tscn"),
+	("res://Parts/Head/Head1.tscn"),
+	("res://Parts/Head/Head2.tscn"),
 	
 ]
 
@@ -16,7 +18,7 @@ func _ready():
 	
 
 func load_head(value):
-	var head = heads[value].instance()
+	var head = load(heads[value]).instance()
 	get_parent().call_deferred("add_child", head)
 	head.position = self.position
 	stats = head.get_node("HeadStats")

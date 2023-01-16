@@ -39,6 +39,8 @@ ui_shoot={
 2d_physics/layer_9="Bullet"
 2d_physics/layer_10="BulletHitbox"
 2d_physics/layer_11="BulletHurtbox"
+2d_physics/layer_12="Floor"
+2d_physics/layer_13="Walls"
 
 [physics]
 

@@ -13,8 +13,10 @@ scale = Vector2( 0.75, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="LegsStats" parent="." instance=ExtResource( 3 )]
-max_health = 30
-max_heat_capacity = 40
+max_health = 10
+max_heat_capacity = 20
+max_speed = 450
+max_jump_height = -500
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]
 collision_layer = 8

@@ -18,7 +18,7 @@ export (int) var jump_speed = -400
 export (int) var head_option = 0
 export (int) var torso_option = 0
 export (int) var legs_option = 0
-export (int) var weapon_option = 0
+export (int) var weapon_option = 1
 
 # -500 -- 2 blocks
 # -400 -- 1 block
@@ -32,9 +32,6 @@ onready var weapon = get_node("Weapon")
 
 var velocity = Vector2()
 var movement = 0
-var shoot_flag = false
-var is_shooting = false
-var shootdelay = 0.5
 
 
 func _ready():
@@ -43,23 +40,30 @@ func _ready():
 	torso.load_torso(torso_option)
 	legs.load_legs(legs_option)
 	weapon.load_weapon(weapon_option)
-	set_health()
-	set_heat()
+	setup_set_health()
+	setup_set_heat()
+	setup_set_movement()
 	head.connect("limb_hit", self, "_on_limb_hit")
 	torso.connect("limb_hit", self, "_on_limb_hit")
 	legs.connect("limb_hit", self, "_on_limb_hit")
 	
 	
-func set_health():
+func setup_set_health():
 	var total_health = head.stats.max_health + torso.stats.max_health + legs.stats.max_health
 	playerstats.set_max_health(total_health)
 	playerstats.health = total_health
 
 
-func set_heat():
+func setup_set_heat():
 	var total_heat = head.stats.max_heat_capacity + torso.stats.max_heat_capacity + legs.stats.max_heat_capacity
 	playerstats.set_max_heat(total_heat)
 	playerstats.heat = 0
+	
+
+func setup_set_movement():
+	speed = legs.stats.max_speed
+	jump_speed = legs.stats.max_jump_height
+	
 	
 
 func get_input(delta):

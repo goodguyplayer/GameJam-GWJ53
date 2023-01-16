@@ -1,7 +1,9 @@
 extends Node2D
 
 var legs = [
-	preload("res://Parts/Legs/Legs0.tscn"),
+	("res://Parts/Legs/Legs0.tscn"),
+	("res://Parts/Legs/Legs1.tscn"),
+	("res://Parts/Legs/Legs2.tscn"),
 	
 ]
 
@@ -17,7 +19,7 @@ func _ready():
 	
 
 func load_legs(value):
-	var leg = legs[value].instance()
+	var leg = load(legs[value]).instance()
 	get_parent().call_deferred("add_child", leg)
 	leg.position = self.position
 	stats = leg.get_node("LegsStats")

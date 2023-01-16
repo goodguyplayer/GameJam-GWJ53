@@ -11,6 +11,7 @@ onready var is_shooting = false
 
 var weapons = [
 	"res://Parts/Weapon/Weapon0.tscn",
+	"res://Parts/Weapon/Weapon1.tscn",
 ]
 
 
@@ -42,7 +43,6 @@ func shoot():
 	get_tree().get_root().call_deferred("add_child", bullet)
 	bullet.position = weapon.bulletorigin.global_position 
 	bullet.bullet_direction = weapon.bulletorigin.global_position - weapon.global_position
-	
 		
 		
 func _on_ShootTimer_timeout():
