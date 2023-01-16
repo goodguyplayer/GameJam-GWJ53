@@ -8,14 +8,14 @@
 [ext_resource path="res://Parts/LegsBasic.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24, 36 )
+extents = Vector2( 24, 46 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 16 )
+position = Vector2( 0, 6 )
 shape = SubResource( 1 )
 
 [node name="PlayerStats" parent="." instance=ExtResource( 4 )]
