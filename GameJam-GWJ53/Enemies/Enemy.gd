@@ -1,15 +1,21 @@
 extends KinematicBody2D
 
 
-export (float) var turndelay = 3
-export (float) var shootdelay = 1.5
-export var bulletscene = preload("res://Parts/Bullets/Bullet0.tscn")
-
-
 onready var timerturn = get_node("TimerTurn")
-onready var timershoot = get_node("TimerTurn")
-onready var facing = get_node("Facing")
-onready var bulletorigin = get_node("BulletOrigin")
+onready var enemystats = get_node("EnemyStats")
+onready var head = get_node("Head")
+onready var torso = get_node("Torso")
+onready var legs = get_node("Legs")
+onready var weapon = get_node("Weapon")
+
+
+export (int) var head_option = 0
+export (int) var torso_option = 0
+export (int) var legs_option = 0
+export (int) var weapon_option = 0
+
+
+export (float) var turndelay = 3
 
 
 var left_right : bool = true # Right - True, left - False
@@ -17,9 +23,13 @@ var is_shooting : bool = false
 
 
 func _ready():
+	enemystats.connect("no_health", self, "queue_free")
+	head.load_head(head_option)
+	torso.load_torso(torso_option)
+	legs.load_legs(legs_option)
+	weapon.load_weapon(weapon_option)
 	timerturn.start(turndelay)
 	timerturn.connect("timeout", self, "_on_timeout_turn")
-	timershoot.connect("timeout", self, "_on_timeout_shoot")
 	
 
 func _physics_process(delta):
@@ -27,29 +37,17 @@ func _physics_process(delta):
 	
 	
 func _on_timeout_turn():
-	facing.position = Vector2( -facing.position.x, 0)
-	bulletorigin.position = Vector2( -bulletorigin.position.x, 0)
-	facing.rotation_degrees += 180
+	if left_right:
+		scale.x = scale.y * 1
+	else:
+		scale.x = scale.y * -1
 	left_right = not left_right
 	
 
-func _on_timeout_shoot():
-	is_shooting = false
-
-
 func _on_TriggerboxEye_body_entered(body):
-	if body.name == "Player" and not is_shooting:
-		is_shooting = true
-		timershoot.start(shootdelay)
-		shoot()
-
-
-func shoot():
-	var bullet = bulletscene.instance()
-	get_parent().call_deferred("add_child", bullet)
-	bullet.position = bulletorigin.global_position 
-	bullet.bullet_direction = bulletorigin.global_position - global_position
+	if body.name == "Player" and not weapon.is_shooting:
+		weapon.shoot()
 	
-
+	
 func _on_Hurtbox_area_entered(area):
 	queue_free()
