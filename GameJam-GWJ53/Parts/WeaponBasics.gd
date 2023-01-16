@@ -32,16 +32,17 @@ func load_weapon(value):
 	weapon.position = self.position
 	stats = weapon.get_node("WeaponStats")
 	
-
+	
+# Today is friday in california
 func shoot():
-	if not is_shooting:
-		emit_signal("gun_fired")
-		is_shooting = true
-		timershoot.start(stats.shoot_delay)
-		var bullet = stats.bullet_used.instance()
-		get_parent().call_deferred("add_child", bullet)
-		bullet.position = weapon.bulletorigin.global_position 
-		bullet.bullet_direction = weapon.global_position - global_position
+	emit_signal("gun_fired")
+	is_shooting = true
+	timershoot.start(stats.shoot_delay)
+	var bullet = stats.bullet_used.instance()
+	get_tree().get_root().call_deferred("add_child", bullet)
+	bullet.position = weapon.bulletorigin.global_position 
+	bullet.bullet_direction = weapon.bulletorigin.global_position - weapon.global_position
+	
 		
 		
 func _on_ShootTimer_timeout():

@@ -8,8 +8,6 @@ extends KinematicBody2D
 
 #####
 
-export var bulletscene = preload("res://Parts/Bullets/Bullet0.tscn")
-
 
 export (int) var speed = 400
 export (int) var gravity = 800
@@ -57,17 +55,17 @@ func set_heat():
 func get_input(delta):
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	velocity.x = velocity.x * speed
-	if Input.is_action_pressed("ui_shoot"):
-		shoot_flag = true
-	else:
-		shoot_flag = false
+	if Input.is_action_pressed("ui_shoot") and not weapon.is_shooting:
+		timershoot.start(shootdelay)
+		weapon.shoot()
+		
 	
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 	if Input.is_action_just_pressed("ui_up"):
 		if is_on_floor():
 			velocity.y = jump_speed
-
+			
 
 func _physics_process(delta):
 	get_input(delta)
@@ -76,12 +74,6 @@ func _physics_process(delta):
 	elif velocity.x < 0:
 		facing.position = Vector2( -1, 0)
 	
-	if shoot_flag and not is_shooting:
-		is_shooting = true
-		timershoot.start(shootdelay)
-		weapon.shoot()
-
-
 
 func _on_TimerShoot_timeout():
 	is_shooting = false

@@ -49,7 +49,8 @@ func shoot():
 	get_parent().call_deferred("add_child", bullet)
 	bullet.position = bulletorigin.global_position 
 	bullet.bullet_direction = bulletorigin.global_position - global_position
-
+	print(bullet.position)
+	print(bullet.bullet_direction)
 
 func _on_Hurtbox_area_entered(area):
 	queue_free()

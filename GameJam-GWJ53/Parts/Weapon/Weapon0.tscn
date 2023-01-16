@@ -10,6 +10,6 @@ texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="BulletOrigin" type="Position2D" parent="."]
-position = Vector2( 32, 0 )
+position = Vector2( 38.4, 0 )
 
 [node name="WeaponStats" parent="." instance=ExtResource( 1 )]

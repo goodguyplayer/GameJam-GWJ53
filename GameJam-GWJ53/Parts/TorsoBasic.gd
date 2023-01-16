@@ -24,3 +24,4 @@ func load_torso(value):
 #
 #func get_heat():
 #	return torso.get_node("TorsoStats").max_heat_capacity
+#
