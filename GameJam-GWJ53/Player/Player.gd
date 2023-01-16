@@ -6,6 +6,8 @@ extends KinematicBody2D
 # Platform Character = https://kidscancode.org/godot_recipes/3.x/2d/platform_character/
 # General details (Collision, layers, related) = https://www.youtube.com/playlist?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
 # Getting root node instead of parent node = https://godotengine.org/qa/58717/getting-the-root-node-from-anywhere
+# Flipping player and all the children = https://godotengine.org/qa/62229/flipping-the-player-including-damage-colliders
+## https://godotengine.org/qa/3953/want-flip-character-the-horizontal-axis-but-whats-the-best-way
 
 #####
 
@@ -17,8 +19,6 @@ export (int) var jump_speed = -400
 # -500 -- 2 blocks
 # -400 -- 1 block
 
-onready var facing = get_node("Facing")
-onready var timershoot = get_node("TimerShoot")
 onready var playerstats = get_node("PlayerStats")
 onready var head = get_node("Head")
 onready var torso = get_node("Torso")
@@ -64,7 +64,6 @@ func get_input(delta):
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	velocity.x = velocity.x * speed
 	if Input.is_action_pressed("ui_shoot") and not weapon.is_shooting:
-		timershoot.start(shootdelay)
 		weapon.shoot()
 		
 	
@@ -78,14 +77,10 @@ func get_input(delta):
 func _physics_process(delta):
 	get_input(delta)
 	if velocity.x > 0:
-		facing.position = Vector2( 1, 0)
+		scale.x = scale.y * 1
 	elif velocity.x < 0:
-		facing.position = Vector2( -1, 0)
-	
-
-func _on_TimerShoot_timeout():
-	is_shooting = false
-
+		scale.x = scale.y * -1
+		
 
 func _on_limb_hit():
 	playerstats.health -= 10
