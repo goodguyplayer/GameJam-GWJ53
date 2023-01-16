@@ -30,6 +30,9 @@ func _ready():
 	weapon.load_weapon(weapon_option)
 	timerturn.start(turndelay)
 	timerturn.connect("timeout", self, "_on_timeout_turn")
+	head.connect("limb_hit", self, "_on_limb_hit")
+	torso.connect("limb_hit", self, "_on_limb_hit")
+	legs.connect("limb_hit", self, "_on_limb_hit")
 	
 
 func _physics_process(delta):
@@ -47,7 +50,9 @@ func _on_timeout_turn():
 func _on_TriggerboxEye_body_entered(body):
 	if body.name == "Player" and not weapon.is_shooting:
 		weapon.shoot()
+
+
+func _on_limb_hit():
+	enemystats.health -= 10
 	
 	
-func _on_Hurtbox_area_entered(area):
-	queue_free()
