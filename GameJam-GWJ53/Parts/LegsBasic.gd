@@ -6,6 +6,11 @@ var legs = [
 ]
 
 var stats
+var hitbox
+
+
+signal limb_hit()
+
 
 func _ready():
 	pass
@@ -16,10 +21,12 @@ func load_legs(value):
 	get_parent().call_deferred("add_child", leg)
 	leg.position = self.position
 	stats = leg.get_node("LegsStats")
+	hitbox = leg.get_node("Hurtbox")
+	hitbox.connect("area_entered", self, "_on_area_entered")
 
 
-#func get_health():
-#	return leg.get_node("LegsStats").max_health
+func _on_area_entered(area):
+	emit_signal("limb_hit")
 #
 #
 #func get_heat():

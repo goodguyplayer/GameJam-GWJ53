@@ -6,6 +6,11 @@ var torsos = [
 ]
 
 var stats
+var hitbox
+
+
+signal limb_hit()
+
 
 func _ready():
 	pass
@@ -16,7 +21,12 @@ func load_torso(value):
 	get_parent().call_deferred("add_child", torso)
 	torso.position = self.position
 	stats = torso.get_node("TorsoStats")
-	
+	hitbox = torso.get_node("Hurtbox")
+	hitbox.connect("area_entered", self, "_on_area_entered")
+
+
+func _on_area_entered(area):
+	emit_signal("limb_hit")
 
 #func get_health():
 #	return torso.get_node("TorsoStats").max_health

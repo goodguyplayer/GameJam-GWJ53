@@ -5,6 +5,7 @@ extends KinematicBody2D
 
 # Platform Character = https://kidscancode.org/godot_recipes/3.x/2d/platform_character/
 # General details (Collision, layers, related) = https://www.youtube.com/playlist?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
+# Getting root node instead of parent node = https://godotengine.org/qa/58717/getting-the-root-node-from-anywhere
 
 #####
 
@@ -40,16 +41,23 @@ func _ready():
 	weapon.load_weapon(0)
 	set_health()
 	set_heat()
+	head.connect("limb_hit", self, "_on_limb_hit")
+	torso.connect("limb_hit", self, "_on_limb_hit")
+	legs.connect("limb_hit", self, "_on_limb_hit")
+	
+	
 	
 	
 func set_health():
 	var total_health = head.stats.max_health + torso.stats.max_health + legs.stats.max_health
 	playerstats.set_max_health(total_health)
+	playerstats.health = total_health
 
 
 func set_heat():
 	var total_heat = head.stats.max_heat_capacity + torso.stats.max_heat_capacity + legs.stats.max_heat_capacity
 	playerstats.set_max_heat(total_heat)
+	playerstats.heat = 0
 	
 
 func get_input(delta):
@@ -77,3 +85,7 @@ func _physics_process(delta):
 
 func _on_TimerShoot_timeout():
 	is_shooting = false
+
+
+func _on_limb_hit():
+	playerstats.health -= 10
