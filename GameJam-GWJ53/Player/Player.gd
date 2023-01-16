@@ -32,6 +32,7 @@ onready var weapon = get_node("Weapon")
 
 var velocity = Vector2()
 var movement = 0
+var left_right = false
 
 
 func _ready():
@@ -70,7 +71,7 @@ func get_input(delta):
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	velocity.x = velocity.x * speed
 	if Input.is_action_pressed("ui_shoot") and not weapon.is_shooting:
-		weapon.shoot()
+		weapon.shoot(left_right)
 		
 	
 	velocity.y += gravity * delta
@@ -83,8 +84,10 @@ func get_input(delta):
 func _physics_process(delta):
 	get_input(delta)
 	if velocity.x > 0:
+		left_right = true
 		scale.x = scale.y * 1
 	elif velocity.x < 0:
+		left_right = false
 		scale.x = scale.y * -1
 		
 

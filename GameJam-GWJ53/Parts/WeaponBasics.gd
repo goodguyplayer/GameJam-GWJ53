@@ -35,7 +35,7 @@ func load_weapon(value):
 	
 	
 # Today is friday in california
-func shoot():
+func shoot(left_right):
 	emit_signal("gun_fired")
 	is_shooting = true
 	timershoot.start(stats.shoot_delay)
@@ -43,6 +43,10 @@ func shoot():
 	get_tree().get_root().call_deferred("add_child", bullet)
 	bullet.position = weapon.bulletorigin.global_position 
 	bullet.bullet_direction = weapon.bulletorigin.global_position - weapon.global_position
+	if left_right:
+		bullet.scale.x = scale.y * 1
+	else:
+		bullet.scale.x = scale.y * -1
 		
 		
 func _on_ShootTimer_timeout():

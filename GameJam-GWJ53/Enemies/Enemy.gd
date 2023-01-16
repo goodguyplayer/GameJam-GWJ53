@@ -49,7 +49,7 @@ func _on_timeout_turn():
 
 func _on_TriggerboxEye_body_entered(body):
 	if body.name == "Player" and not weapon.is_shooting:
-		weapon.shoot()
+		weapon.shoot(left_right)
 
 
 func _on_limb_hit():
