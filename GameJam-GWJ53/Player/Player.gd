@@ -15,6 +15,10 @@ extends KinematicBody2D
 export (int) var speed = 400
 export (int) var gravity = 800
 export (int) var jump_speed = -400
+export (int) var head_option = 0
+export (int) var torso_option = 0
+export (int) var legs_option = 0
+export (int) var weapon_option = 0
 
 # -500 -- 2 blocks
 # -400 -- 1 block
@@ -35,17 +39,15 @@ var shootdelay = 0.5
 
 func _ready():
 	playerstats.connect("no_health", self, "queue_free")
-	head.load_head(0)
-	torso.load_torso(0)
-	legs.load_legs(0)
-	weapon.load_weapon(0)
+	head.load_head(head_option)
+	torso.load_torso(torso_option)
+	legs.load_legs(legs_option)
+	weapon.load_weapon(weapon_option)
 	set_health()
 	set_heat()
 	head.connect("limb_hit", self, "_on_limb_hit")
 	torso.connect("limb_hit", self, "_on_limb_hit")
 	legs.connect("limb_hit", self, "_on_limb_hit")
-	
-	
 	
 	
 func set_health():

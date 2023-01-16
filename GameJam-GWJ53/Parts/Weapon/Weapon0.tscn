@@ -13,3 +13,4 @@ script = ExtResource( 3 )
 position = Vector2( 38.4, 0 )
 
 [node name="WeaponStats" parent="." instance=ExtResource( 1 )]
+shoot_delay = 0.25

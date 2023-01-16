@@ -26,7 +26,7 @@ texture = SubResource( 3 )
 shape = SubResource( 1 )
 
 [node name="BulletStats" parent="." instance=ExtResource( 3 )]
-bullet_speed = 100
+bullet_speed = 1000
 bullet_damage = 10
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
