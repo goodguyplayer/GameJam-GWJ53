@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_Start_pressed():
-	var level_selection = load("res://Menu/Scenes/LevelSelection.tscn")
+	var level_selection = load("res://Menu/Scenes/LevelSelection.tscn").instance()
 	get_tree().current_scene.add_child(level_selection)
 
 
@@ -31,3 +31,7 @@ func _on_Credits_pressed():
 
 func _on_Quit_pressed():
 	get_tree().quit()
+
+
+func _on_Tutorial_pressed():
+	pass # Replace with function body.

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Menu/Scenes/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Menu/Scripts/MainMenu.gd" type="Script" id=1]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -37,10 +37,20 @@ focus_neighbour_right = NodePath("../Options")
 focus_neighbour_bottom = NodePath("../Options")
 text = "Start Game"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
 margin_top = 24.0
 margin_right = 192.0
 margin_bottom = 44.0
+focus_neighbour_left = NodePath("../Quit")
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_right = NodePath("../Options")
+focus_neighbour_bottom = NodePath("../Options")
+text = "Tutorial"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 192.0
+margin_bottom = 68.0
 focus_neighbour_left = NodePath("../Start")
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_right = NodePath("../Credits")
@@ -48,9 +58,9 @@ focus_neighbour_bottom = NodePath("../Credits")
 text = "Options"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
-margin_top = 48.0
+margin_top = 72.0
 margin_right = 192.0
-margin_bottom = 68.0
+margin_bottom = 92.0
 focus_neighbour_left = NodePath("../Options")
 focus_neighbour_top = NodePath("../Options")
 focus_neighbour_right = NodePath("../Quit")
@@ -58,9 +68,9 @@ focus_neighbour_bottom = NodePath("../Quit")
 text = "Credits"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
-margin_top = 72.0
+margin_top = 96.0
 margin_right = 192.0
-margin_bottom = 92.0
+margin_bottom = 116.0
 focus_neighbour_left = NodePath("../Credits")
 focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_right = NodePath("../Start")
@@ -68,6 +78,7 @@ focus_neighbour_bottom = NodePath("../Start")
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
