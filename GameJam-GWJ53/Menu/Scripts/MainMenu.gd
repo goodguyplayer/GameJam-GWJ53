@@ -34,4 +34,4 @@ func _on_Quit_pressed():
 
 
 func _on_Tutorial_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://World/Tutorial.tscn")
