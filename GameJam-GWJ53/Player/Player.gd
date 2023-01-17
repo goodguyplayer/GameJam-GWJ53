@@ -32,7 +32,7 @@ onready var weapon = get_node("Weapon")
 
 var velocity = Vector2()
 var movement = 0
-var left_right = false
+var left_right = true
 
 
 func _ready():
