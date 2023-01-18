@@ -8,12 +8,14 @@ var torsos = [
 var stats
 var hitbox
 
+export var size = 0 setget , get_part_size
+
 
 signal limb_hit()
 
 
 func _ready():
-	pass
+	size = len(torsos) - 1
 	
 
 func load_torso(value):
@@ -28,9 +30,10 @@ func load_torso(value):
 func _on_area_entered(area):
 	emit_signal("limb_hit")
 
-#func get_health():
-#	return torso.get_node("TorsoStats").max_health
-#
+
+func get_part_size():
+	return size
+	
 #
 #func get_heat():
 #	return torso.get_node("TorsoStats").max_heat_capacity

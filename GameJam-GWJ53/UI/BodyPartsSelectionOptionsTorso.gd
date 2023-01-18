@@ -1,6 +1,6 @@
 extends Control
 
-onready var head = get_node("MarginContainer/VBoxContainer/VBoxContainer/Head")
+onready var torso = get_node("MarginContainer/VBoxContainer/VBoxContainer/Torso")
 onready var title = get_node("MarginContainer/VBoxContainer/VBoxContainer2/Panel/VBoxContainer/Title")
 onready var description = get_node("MarginContainer/VBoxContainer/VBoxContainer2/Panel/VBoxContainer/Description")
 
@@ -10,7 +10,7 @@ var count = 0 setget ,get_limb_count
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	size_limb = head.size
+	size_limb = torso.size
 	load_limb(count)
 
 
@@ -31,9 +31,9 @@ func _on_Next_pressed():
 	
 
 func load_limb(count):
-	head.load_head(count)
-	title.text = head.stats.part_name
-	description.text = head.stats.part_description
+	torso.load_torso(count)
+	title.text = torso.stats.part_name
+	description.text = torso.stats.part_description
 	
 	
 func get_limb_count():

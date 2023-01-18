@@ -2,7 +2,7 @@
 
 [ext_resource path="res://UI/battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Parts/WeaponBasics.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Parts/TorsoBasic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/BodyPartsSelectionOptionsTorso.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Parts/LegsBasic.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/BodyPartsSelectionOptionsHead.tscn" type="PackedScene" id=5]
 
@@ -54,19 +54,21 @@ margin_top = 18.0
 margin_right = 1008.0
 margin_bottom = 18.0
 
-[node name="Torso" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 3 )]
-position = Vector2( 96, 6 )
-
 [node name="LegsBasics" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 4 )]
 position = Vector2( 208, -2 )
 
 [node name="WeaponBasic" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 2 )]
 position = Vector2( 120, -10 )
 
-[node name="BodyPartsSelectionOptionsHead" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 5 )]
-anchor_right = 0.043
-anchor_bottom = 7.556
-margin_top = 102.0
+[node name="Head" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+
+[node name="Torso" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 248.0
+margin_right = 4.0
 
 [node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
 margin_top = 22.0
