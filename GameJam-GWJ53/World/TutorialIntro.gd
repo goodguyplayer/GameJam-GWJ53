@@ -17,5 +17,4 @@ func _ready():
 
 
 func _on_TextboxEntry_textbox_end(title):
-	var level_selection = load("res://World/BodyPartsSelection.tscn").instance()
-	get_tree().current_scene.add_child(level_selection)
+	get_tree().change_scene("res://World/BodyPartsSelection.tscn")

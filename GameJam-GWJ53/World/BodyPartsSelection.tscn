@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/BodyPartsSelectionOptionsWeapons.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/BodyPartsSelectionOptionsTorso.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/BodyPartsSelection.gd" type="Script" id=4]
 [ext_resource path="res://UI/BodyPartsSelectionOptionsHead.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/BodyPartsSelectionOptionsLegs.tscn" type="PackedScene" id=6]
 
@@ -15,6 +16,7 @@ font_data = ExtResource( 1 )
 [node name="BodyParts" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -53,14 +55,14 @@ valign = 1
 [node name="BodyPartSelector" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
 margin_top = 74.0
 margin_right = 1008.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 0, 80 )
+margin_bottom = 474.0
+rect_min_size = Vector2( 0, 400 )
 
 [node name="Head" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 200.0
-margin_bottom = 80.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 200, 0 )
 
 [node name="Torso" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 3 )]
@@ -68,7 +70,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 204.0
 margin_right = 404.0
-margin_bottom = 80.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 200, 0 )
 
 [node name="Legs" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 6 )]
@@ -76,27 +78,35 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 408.0
 margin_right = 608.0
-margin_bottom = 80.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 200, 0 )
 
-[node name="BodyPartsSelectionOptionsTorso" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 2 )]
+[node name="Weapon" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 612.0
 margin_right = 812.0
-margin_bottom = 80.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 200, 0 )
 
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
-margin_top = 158.0
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+margin_top = 478.0
 margin_right = 1008.0
-margin_bottom = 172.0
+margin_bottom = 518.0
+rect_min_size = Vector2( 50, 40 )
+alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer2/Buttons"]
-margin_right = 1008.0
-margin_bottom = 14.0
+[node name="Return" type="Button" parent="MarginContainer/VBoxContainer2/Buttons"]
+margin_left = 388.0
+margin_right = 500.0
+margin_bottom = 40.0
+text = "Return to menu"
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/Buttons/MarginContainer3"]
-margin_right = 1008.0
-margin_bottom = 14.0
-text = "TEST"
+[node name="Accept" type="Button" parent="MarginContainer/VBoxContainer2/Buttons"]
+margin_left = 504.0
+margin_right = 620.0
+margin_bottom = 40.0
+text = "Assemble mech"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/Buttons/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/Buttons/Accept" to="." method="_on_Accept_pressed"]

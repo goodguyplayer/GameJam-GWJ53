@@ -36,6 +36,14 @@ var left_right = true
 
 
 func _ready():
+	head_option = GlobalVariables.player_head
+	torso_option = GlobalVariables.player_torso
+	legs_option = GlobalVariables.player_leg
+	weapon_option = GlobalVariables.player_weapon
+	load_player()
+	
+	
+func load_player():
 	playerstats.connect("no_health", self, "queue_free")
 	head.load_head(head_option)
 	torso.load_torso(torso_option)
@@ -47,8 +55,8 @@ func _ready():
 	head.connect("limb_hit", self, "_on_limb_hit")
 	torso.connect("limb_hit", self, "_on_limb_hit")
 	legs.connect("limb_hit", self, "_on_limb_hit")
-	
-	
+
+
 func setup_set_health():
 	var total_health = head.stats.max_health + torso.stats.max_health + legs.stats.max_health
 	playerstats.set_max_health(total_health)

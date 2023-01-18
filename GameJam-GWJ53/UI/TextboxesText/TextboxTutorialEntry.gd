@@ -35,9 +35,6 @@ func _ready():
 	
 
 func _process(delta):
-	if len(text_queue) == 0:
-		queue_free()
-		emit_signal("textbox_end", "intro")
 	match current_state:
 		State.READY:
 			if !text_queue.empty():
@@ -51,6 +48,9 @@ func _process(delta):
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_textbutton"):
 				change_state(State.READY)
+				if len(text_queue) == 0:
+					queue_free()
+					emit_signal("textbox_end", "intro")
 
 
 func queue_text(next_text):
