@@ -18,13 +18,15 @@ var weapons = [
 var stats
 var weapon
 
+export var size = 0 setget , get_part_size
+
 
 signal gun_fired()
 signal heat_increased(heat_caused)
 
 
 func _ready():
-	pass
+	size = len(weapons) - 1
 	
 
 func load_weapon(value):
@@ -51,3 +53,8 @@ func shoot(left_right):
 		
 func _on_ShootTimer_timeout():
 	is_shooting = false
+
+
+func get_part_size():
+	return size
+	

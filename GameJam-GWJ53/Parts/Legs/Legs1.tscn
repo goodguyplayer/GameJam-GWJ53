@@ -15,8 +15,10 @@ texture = ExtResource( 2 )
 [node name="LegsStats" parent="." instance=ExtResource( 3 )]
 max_health = 10
 max_heat_capacity = 20
-max_speed = 450
+max_speed = 500
 max_jump_height = -500
+part_name = "Hare legs"
+part_description = "In exchange of health and heat dissipation, go faster and jump higher"
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]
 collision_layer = 8

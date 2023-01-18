@@ -14,3 +14,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_TextboxEntry_textbox_end(title):
+	var level_selection = load("res://World/BodyPartsSelection.tscn").instance()
+	get_tree().current_scene.add_child(level_selection)

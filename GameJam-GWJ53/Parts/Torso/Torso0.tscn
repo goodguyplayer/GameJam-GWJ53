@@ -15,7 +15,7 @@ texture = ExtResource( 2 )
 [node name="TorsoStats" parent="." instance=ExtResource( 3 )]
 max_health = 50
 max_heat_capacity = 60
-part_name = "Default Torso"
+part_name = "Standard Torso"
 part_description = "The standard. Standard health, standard heat dissipation."
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]

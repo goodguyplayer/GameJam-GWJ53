@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/battlenet.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Parts/WeaponBasics.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/BodyPartsSelectionOptionsWeapons.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/BodyPartsSelectionOptionsTorso.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Parts/LegsBasic.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/BodyPartsSelectionOptionsHead.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/BodyPartsSelectionOptionsLegs.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 1 )
@@ -35,7 +35,8 @@ margin_bottom = 584.0
 
 [node name="Title" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
 margin_right = 1008.0
-margin_bottom = 14.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2/Title"]
 margin_right = 1008.0
@@ -50,30 +51,46 @@ align = 1
 valign = 1
 
 [node name="BodyPartSelector" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
-margin_top = 18.0
+margin_top = 74.0
 margin_right = 1008.0
-margin_bottom = 18.0
-
-[node name="LegsBasics" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 4 )]
-position = Vector2( 208, -2 )
-
-[node name="WeaponBasic" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 2 )]
-position = Vector2( 120, -10 )
+margin_bottom = 154.0
+rect_min_size = Vector2( 0, 80 )
 
 [node name="Head" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 200, 0 )
 
 [node name="Torso" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 248.0
-margin_right = 4.0
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Legs" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 408.0
+margin_right = 608.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="BodyPartsSelectionOptionsTorso" parent="MarginContainer/VBoxContainer2/BodyPartSelector" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 612.0
+margin_right = 812.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 200, 0 )
 
 [node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
-margin_top = 22.0
+margin_top = 158.0
 margin_right = 1008.0
-margin_bottom = 36.0
+margin_bottom = 172.0
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer2/Buttons"]
 margin_right = 1008.0
