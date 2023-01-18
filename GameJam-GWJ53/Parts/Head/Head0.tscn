@@ -15,6 +15,8 @@ texture = ExtResource( 3 )
 [node name="HeadStats" parent="." instance=ExtResource( 2 )]
 max_health = 20
 max_heat_capacity = 20
+part_name = "Standard"
+part_description = "Standard head. Basic armor and heat dissipation."
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]
 collision_layer = 8

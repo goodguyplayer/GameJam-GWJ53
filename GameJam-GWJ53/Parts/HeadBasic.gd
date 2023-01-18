@@ -10,11 +10,13 @@ var heads = [
 var stats
 var hitbox
 
+export var size = 0 setget , get_part_size
+
 signal limb_hit()
 
 
 func _ready():
-	pass
+	size = len(heads) - 1
 	
 
 func load_head(value):
@@ -28,6 +30,10 @@ func load_head(value):
 
 func _on_area_entered(area):
 	emit_signal("limb_hit")
+	
+
+func get_part_size():
+	return size
 	
 #
 #func get_health():

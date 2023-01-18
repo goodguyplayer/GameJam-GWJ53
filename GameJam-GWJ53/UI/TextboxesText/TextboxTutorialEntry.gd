@@ -37,7 +37,7 @@ func _ready():
 func _process(delta):
 	if len(text_queue) == 0:
 		queue_free()
-		emit_signal("template")
+		emit_signal(textbox_end, "intro")
 	match current_state:
 		State.READY:
 			if !text_queue.empty():
