@@ -27,9 +27,11 @@ signal textbox_end(title)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_textbox()
-	queue_text("Welcome to the system. I will be your guide for the world within.")
-	queue_text("The world within, a virtual world, has been infected by a virus. It is our job to stop the infection.")
-	queue_text("To access the world within, users like you and I require special suits. Thus, before every mission, you'll be granted the opportunity to set your suit.")
+	queue_text("Welcome to the system. I will be your guide for your mission.")
+	queue_text("You have been chosen, amidst others, to enter the World Within and eliminate the Rogue AI.")
+	queue_text("The World Within is a virtual world that connects millions of planets and people into a virtual reality.")
+	queue_text("To access the world within, users like you and I simply need to connect ourselves to the computer. However, to protect you from the virus corruption, you will be granted a special suit.")
+	queue_text("Therefore, before every mission, you will be granted diverse power suit parts to fit your style.")
 	queue_text("For training purposes, I will send you to a practice world. The practice world won't kill you, so feel free to return whenever and test new pieces.")
 	queue_text("However, keep in mind that we use the world within to communicate, therefore the virus may be listening to our conversations and watching every move.")
 	
