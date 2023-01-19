@@ -9,6 +9,7 @@ signal bullet_hit(damage)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Hitbox.connect("area_entered", self, "_on_area_entered")
+	$Hurtbox.connect("area_entered", self, "_on_area_entered")
 	if stats.destroy_on_impact:
 			$Hitbox.connect("body_entered", self, "_on_area_entered")
 			

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Parts/Bullets/Bullet0.gd" type="Script" id=1]
 [ext_resource path="res://Triggerboxes/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Parts/BulletStats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Triggerboxes/Hurtbox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StreamTexture" id=3]
 flags = 4
@@ -31,10 +32,12 @@ bullet_damage = 10
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
 collision_layer = 512
-collision_mask = 6216
+collision_mask = 6728
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 
 [editable path="Hitbox"]
