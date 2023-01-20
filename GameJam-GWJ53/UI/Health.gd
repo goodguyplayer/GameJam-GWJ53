@@ -1,14 +1,18 @@
 extends Control
 
 
-onready var healt_bar = get_node("MarginContainer/ProgressBar")
+onready var health_bar = get_node("MarginContainer/ProgressBar")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	GlobalSignals.connect("player_health_max_changed", self, "set_max_health")
+	GlobalSignals.connect("player_health_changed", self, "set_health")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_health(value):
+	health_bar.value = value
+
+
+func set_max_health(value):
+	health_bar.max_value = value

@@ -15,7 +15,6 @@ signal max_heat_reached()
 func set_max_health(value):
 	max_health = value
 	self.health = min(health, max_health)
-	GlobalSignals.emit_signal("player_health_max_changed", value)
 	emit_signal("max_health_changed", max_health)
 	
 
@@ -25,8 +24,6 @@ func get_max_health():
 	
 func set_max_heat(value):
 	max_heat = value
-	GlobalSignals.emit_signal("player_heat_max_changed", value)
-	GlobalSignals.emit_signal("player_heat_changed", 0)
 		
 		
 func get_max_heat():
@@ -36,7 +33,6 @@ func get_max_heat():
 func set_health(value):
 	health = value
 	emit_signal("health_changed", health)
-	GlobalSignals.emit_signal("player_health_changed", health)
 	if health <= 0:
 		emit_signal("no_health")
 		
@@ -48,9 +44,6 @@ func get_health():
 func set_heat(value):
 	heat = min(value, max_heat)
 	emit_signal("heat_changed", heat)
-	GlobalSignals.emit_signal("player_heat_changed", heat)
-	if heat == max_heat:
-		GlobalSignals.emit_signal("max_heat_reached")
 	
 	
 	

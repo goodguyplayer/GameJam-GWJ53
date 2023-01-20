@@ -16,7 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GlobalVariables="*res://System/GlobalVariables.gd"
+GlobalSignals="*res://System/GlobalSignals.tscn"
+GlobalVariables="*res://System/GlobalVariables.tscn"
 
 [gui]
 
