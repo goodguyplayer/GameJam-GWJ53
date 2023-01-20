@@ -27,10 +27,7 @@ signal textbox_end(title)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_textbox()
-	queue_text("Congratulations on the jump.")
-	queue_text("However, remember that you'll face various corrupted suits. For purpose of training, we have a virtual body emulating one.")
-	queue_text("Three shots of any gun should deal with the suits. Have at it")
-	queue_text("But keep an eye on your heat meter. If you reach the maximum, it'll damage you. Just wait a second and two before resuming.")
+	queue_text("Assistance required in sector 3-C")
 	
 	
 func _process(delta):
