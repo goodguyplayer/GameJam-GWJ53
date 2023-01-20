@@ -17,8 +17,8 @@ func _ready():
 
 
 func _on_Start_pressed():
-	var level_selection = load("res://Menu/Scenes/LevelSelection.tscn").instance()
-	get_tree().current_scene.add_child(level_selection)
+	GlobalVariables.stage_to_load = "res://World/World1.tscn"
+	get_tree().change_scene("res://World/BodyPartsSelection.tscn")
 
 
 func _on_Options_pressed():
