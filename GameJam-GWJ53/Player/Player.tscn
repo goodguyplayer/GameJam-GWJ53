@@ -31,3 +31,10 @@ position = Vector2( 0, 36 )
 
 [node name="Weapon" parent="." instance=ExtResource( 1 )]
 position = Vector2( 44, 0 )
+
+[node name="HeatTimer" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="gun_fired" from="Weapon" to="." method="_on_Weapon_gun_fired"]
+[connection signal="timeout" from="HeatTimer" to="." method="_on_HeatTimer_timeout"]

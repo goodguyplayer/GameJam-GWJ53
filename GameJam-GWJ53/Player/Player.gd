@@ -29,6 +29,9 @@ onready var torso = get_node("Torso")
 onready var legs = get_node("Legs")
 onready var weapon = get_node("Weapon")
 
+onready var heattimer = get_node("HeatTimer")
+onready var tween = get_node("Tween")
+
 
 var velocity = Vector2()
 var movement = 0
@@ -55,6 +58,7 @@ func load_player():
 	head.connect("limb_hit", self, "_on_limb_hit")
 	torso.connect("limb_hit", self, "_on_limb_hit")
 	legs.connect("limb_hit", self, "_on_limb_hit")
+	GlobalSignals.connect("max_heat_reached", self, "heat_damage")
 
 
 func setup_set_health():
@@ -101,3 +105,19 @@ func _physics_process(delta):
 
 func _on_limb_hit():
 	playerstats.health -= 10
+
+
+func _on_Weapon_gun_fired():
+	heattimer.stop()
+	heattimer.start(2)
+	playerstats.heat += 10
+	
+
+func _on_HeatTimer_timeout():
+	tween.interpolate_property(playerstats, "heat", playerstats.heat, 0, 2, Tween.TRANS_LINEAR)
+	playerstats.heat = 0
+
+
+func heat_damage():
+	playerstats.heat = 0
+	playerstats.health -= 30
