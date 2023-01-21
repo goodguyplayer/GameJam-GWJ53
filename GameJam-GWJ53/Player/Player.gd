@@ -109,7 +109,7 @@ func _on_limb_hit():
 
 func _on_Weapon_gun_fired():
 	heattimer.stop()
-	heattimer.start(2)
+	heattimer.start(1)
 	playerstats.heat += 10
 	
 
