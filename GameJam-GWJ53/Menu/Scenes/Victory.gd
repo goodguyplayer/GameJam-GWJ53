@@ -10,7 +10,7 @@ var seconds = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	time_calculator()
-	score.text = str(GlobalVariables.enemies_killed) + " out of 20"
+	score.text = str(GlobalVariables.enemies_killed) + " out of 20 remained"
 	time_spent.text = str(minutes) + ":" + str(seconds)
 	
 
