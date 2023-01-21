@@ -10,7 +10,7 @@ flags = 4
 load_path = "res://.import/Bullet0.png-2dff15a972f0c0510c44718b11b41eae.stex"
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 3, 3 )
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.0
