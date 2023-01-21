@@ -2,6 +2,7 @@ extends Area2D
 
 
 onready var timershoot = get_node("ShootTimer")
+onready var fired = get_node("Fired")
 
 
 onready var value = 0
@@ -39,6 +40,7 @@ func load_weapon(value):
 # Today is friday in california
 func shoot(left_right):
 	emit_signal("gun_fired")
+	fired.play()
 	is_shooting = true
 	timershoot.start(stats.shoot_delay)
 	var bullet = stats.bullet_used.instance()

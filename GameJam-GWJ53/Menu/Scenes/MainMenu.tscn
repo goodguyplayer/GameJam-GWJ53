@@ -1,13 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menu/Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/Images/LogoCheeky.png" type="Texture" id=2]
 [ext_resource path="res://World/Images/53-Theme-Ass-Required.png" type="Texture" id=3]
 [ext_resource path="res://World/Images/wait-what.png" type="Texture" id=4]
 [ext_resource path="res://World/Images/thermo.png" type="Texture" id=5]
+[ext_resource path="res://UI/battlenet.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0784314, 0.133333, 0.25098, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -48,9 +57,24 @@ margin_right = 467.0
 margin_bottom = 180.0
 
 [node name="Label" type="Label" parent="Title"]
-margin_right = 128.0
-margin_bottom = 40.0
-text = "Title of the game"
+margin_left = -168.0
+margin_top = 24.0
+margin_right = 204.0
+margin_bottom = 246.0
+custom_fonts/font = SubResource( 2 )
+text = "SUPER CYBER WORLD
+UNDER ATTACK BY
+A MASSIVE VIRUS
+THAT WANTS TO 
+TAKE OVER ALL BASES"
+
+[node name="Label2" type="Label" parent="Title"]
+margin_left = -72.0
+margin_top = 256.0
+margin_right = 61.0
+margin_bottom = 291.0
+custom_fonts/font = SubResource( 3 )
+text = "The game"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 20.0

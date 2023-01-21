@@ -32,6 +32,9 @@ onready var weapon = get_node("Weapon")
 onready var heattimer = get_node("HeatTimer")
 onready var tween = get_node("Tween")
 
+onready var hitsound = get_node("HitSound")
+onready var heatsound = get_node("HeatSound")
+
 
 var velocity = Vector2()
 var movement = 0
@@ -105,6 +108,7 @@ func _physics_process(delta):
 
 func _on_limb_hit():
 	playerstats.health -= 10
+	hitsound.play()
 
 
 func _on_Weapon_gun_fired():
@@ -121,3 +125,4 @@ func _on_HeatTimer_timeout():
 func heat_damage():
 	playerstats.heat = 0
 	playerstats.health -= 30
+	heatsound.play()

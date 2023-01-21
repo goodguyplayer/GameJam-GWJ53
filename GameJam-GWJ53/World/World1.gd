@@ -8,6 +8,13 @@ onready var plot_reveal_core = get_node("Plot/PlotRevealCore")
 onready var core = get_node("Enemies/Core")
 onready var timer = get_node("Timer")
 
+onready var sound_1 = get_node("Sounds/Sound1")
+onready var sound_2 = get_node("Sounds/Sound2")
+onready var sound_3 = get_node("Sounds/Sound3")
+
+onready var sound_2_trigger = get_node("Plot/Audio2")
+onready var sound_3_trigger = get_node("Plot/Audio3")
+
 var time_spent = 0
 
 
@@ -16,6 +23,7 @@ func _ready():
 	GlobalSignals.connect("core_destroyed", self, "_on_core_destroyed")
 	GlobalSignals.connect("player_destroyed", self, "_on_player_destroyed")
 	timer.connect("timeout", self, "_update_time")
+	sound_1.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,3 +67,13 @@ func _on_player_destroyed():
 func _update_time():
 	time_spent += 1
 	
+
+
+func _on_Audio2_area_entered(area):
+	sound_2_trigger.queue_free()
+	sound_2.play()
+
+
+func _on_Audio3_area_entered(area):
+	sound_3_trigger.queue_free()
+	sound_3.play()

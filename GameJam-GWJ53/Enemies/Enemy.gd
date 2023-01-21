@@ -8,6 +8,7 @@ onready var torso = get_node("Torso")
 onready var legs = get_node("Legs")
 onready var weapon = get_node("Weapon")
 onready var health_bar = get_node("ProgressBar")
+onready var hitsound = get_node("HitSound")
 
 
 export (int) var head_option = 0
@@ -61,5 +62,6 @@ func _on_limb_hit():
 	health_bar.visible = true
 	enemystats.health -= 10
 	health_bar.value = enemystats.health
+	hitsound.play()
 	
 	

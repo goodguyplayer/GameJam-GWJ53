@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -7,21 +7,47 @@
 [ext_resource path="res://Triggerboxes/Triggerbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/World1.gd" type="Script" id=6]
 [ext_resource path="res://Enemies/Core.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Images/Background.png" type="Texture" id=8]
+[ext_resource path="res://Music/dial-up-modem-01-Intro.wav" type="AudioStream" id=9]
+[ext_resource path="res://Music/dial-up-modem-01-Split1.wav" type="AudioStream" id=10]
+[ext_resource path="res://Music/dial-up-modem-01-Split2.wav" type="AudioStream" id=11]
+[ext_resource path="res://UI/battlenet.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96, 92.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 96, 92 )
+extents = Vector2( 96, 266 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 172 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 40, 300 )
+extents = Vector2( 96, 268 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 120
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 70
+font_data = ExtResource( 12 )
 
 [node name="World1" type="Node2D"]
 script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 3669, 314.5 )
+scale = Vector2( 24.4467, 2.15986 )
+texture = ExtResource( 8 )
 
 [node name="Floor" type="Node" parent="."]
 
@@ -1165,13 +1191,13 @@ visible = false
 position = Vector2( 6848, 320 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 224, 300 )
+position = Vector2( 216, 448 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 224, 300 )
+position = Vector2( 216, 448 )
 current = true
 limit_left = 1
 limit_top = 0
@@ -1194,7 +1220,7 @@ shape = SubResource( 1 )
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="Plot/PlotSector" index="0"]
-position = Vector2( 1952, 440 )
+position = Vector2( 1952, 266 )
 shape = SubResource( 2 )
 
 [node name="PlotCore" parent="Plot" instance=ExtResource( 5 )]
@@ -1213,15 +1239,80 @@ collision_mask = 2
 position = Vector2( -48, -60 )
 shape = SubResource( 4 )
 
+[node name="Audio2" parent="Plot" instance=ExtResource( 5 )]
+position = Vector2( 2112, 296 )
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Plot/Audio2" index="0"]
+position = Vector2( -96, -28 )
+shape = SubResource( 4 )
+
+[node name="Audio3" parent="Plot" instance=ExtResource( 5 )]
+position = Vector2( 5768, 320 )
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Plot/Audio3" index="0"]
+position = Vector2( -808, 16 )
+shape = SubResource( 4 )
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Sound1" type="AudioStreamPlayer2D" parent="Sounds"]
+position = Vector2( 440, 224 )
+stream = ExtResource( 9 )
+
+[node name="Sound2" type="AudioStreamPlayer2D" parent="Sounds"]
+position = Vector2( 2024, 408 )
+stream = ExtResource( 10 )
+
+[node name="Sound3" type="AudioStreamPlayer2D" parent="Sounds"]
+position = Vector2( 4960, 336 )
+stream = ExtResource( 11 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 1856.0
+margin_top = 48.0
+margin_right = 2112.0
+margin_bottom = 192.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Panel"]
+margin_right = 256.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 6 )
+text = "3-C"
+align = 1
+valign = 1
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 4544.0
+margin_top = 64.0
+margin_right = 4800.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Panel2"]
+margin_right = 256.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 7 )
+text = "Destroy the core"
+align = 1
+valign = 1
+autowrap = true
 
 [connection signal="area_entered" from="Plot/PlotHoming" to="." method="_on_PlotHoming_area_entered"]
 [connection signal="area_entered" from="Plot/PlotSector" to="." method="_on_PlotSector_area_entered"]
 [connection signal="area_entered" from="Plot/PlotCore" to="." method="_on_PlotCore_area_entered"]
 [connection signal="area_entered" from="Plot/PlotRevealCore" to="." method="_on_PlotRevealCore_area_entered"]
+[connection signal="area_entered" from="Plot/Audio2" to="." method="_on_Audio2_area_entered"]
+[connection signal="area_entered" from="Plot/Audio3" to="." method="_on_Audio3_area_entered"]
 
 [editable path="Plot/PlotHoming"]
 [editable path="Plot/PlotSector"]
 [editable path="Plot/PlotCore"]
 [editable path="Plot/PlotRevealCore"]
+[editable path="Plot/Audio2"]
+[editable path="Plot/Audio3"]

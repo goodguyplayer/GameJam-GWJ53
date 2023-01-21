@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Triggerboxes/Triggerbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/TextboxIntroTutorial.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/HealthHeat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Images/Background.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 78 )
@@ -17,6 +18,11 @@ extents = Vector2( 21, 244 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1237, 298.5 )
+scale = Vector2( 8.23333, 2.05102 )
+texture = ExtResource( 9 )
 
 [node name="ExitGate" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2400, 520 )

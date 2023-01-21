@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dial-up-modem-01-Intro.wav-8a5f9799ac655a9f9968cbd5b6aef9fb.sample"
+
+[deps]
+
+source_file="res://Music/dial-up-modem-01-Intro.wav"
+dest_files=[ "res://.import/dial-up-modem-01-Intro.wav-8a5f9799ac655a9f9968cbd5b6aef9fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
