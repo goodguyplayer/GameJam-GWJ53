@@ -4,10 +4,7 @@
 [ext_resource path="res://Triggerboxes/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Parts/BulletStats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Triggerboxes/Hurtbox.tscn" type="PackedScene" id=4]
-
-[sub_resource type="StreamTexture" id=3]
-flags = 4
-load_path = "res://.import/Bullet0.png-2dff15a972f0c0510c44718b11b41eae.stex"
+[ext_resource path="res://Parts/Bullets/Bullet0.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 3 )
@@ -21,7 +18,7 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.25 )
-texture = SubResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
