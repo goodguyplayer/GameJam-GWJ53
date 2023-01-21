@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,9 @@ extents = Vector2( 96, 92 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 172 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 40, 300 )
 
 [node name="World1" type="Node2D"]
 script = ExtResource( 6 )
@@ -1158,6 +1161,7 @@ position = Vector2( 2656, 72 )
 turndelay = 6.0
 
 [node name="Core" parent="Enemies" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 6848, 320 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -1202,6 +1206,15 @@ position = Vector2( -32, -36 )
 shape = SubResource( 3 )
 
 [node name="PlotRevealCore" parent="Plot" instance=ExtResource( 5 )]
+position = Vector2( 6408, 360 )
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Plot/PlotRevealCore" index="0"]
+position = Vector2( -48, -60 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="area_entered" from="Plot/PlotHoming" to="." method="_on_PlotHoming_area_entered"]
 [connection signal="area_entered" from="Plot/PlotSector" to="." method="_on_PlotSector_area_entered"]
@@ -1211,3 +1224,4 @@ shape = SubResource( 3 )
 [editable path="Plot/PlotHoming"]
 [editable path="Plot/PlotSector"]
 [editable path="Plot/PlotCore"]
+[editable path="Plot/PlotRevealCore"]

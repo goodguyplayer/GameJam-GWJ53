@@ -8,7 +8,7 @@ onready var gate_guide = get_node("ExitGuide")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	GlobalSignals.connect("player_destroyed", self, "_on_player_destroyed")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,3 +30,7 @@ func _on_ExitGuide_area_entered(area):
 	gate_guide.queue_free()
 	var gate_guide_textbox = load("res://UI/TextboxExitGateTutorial.tscn").instance()
 	get_tree().current_scene.add_child(gate_guide_textbox)
+
+
+func _on_player_destroyed():
+	get_tree().change_scene("res://Menu/Scenes/Defeat.tscn")

@@ -6,12 +6,10 @@ onready var torso = get_node("MarginContainer/VBoxContainer2/BodyPartSelector/To
 onready var legs = get_node("MarginContainer/VBoxContainer2/BodyPartSelector/Legs")
 onready var weapon = get_node("MarginContainer/VBoxContainer2/BodyPartSelector/Weapon")
 
-export var level_to_load = "res://World/Tutorial.tscn"
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	level_to_load = GlobalVariables.stage_to_load
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,4 +26,4 @@ func _on_Accept_pressed():
 	GlobalVariables.player_torso = torso.count
 	GlobalVariables.player_leg = legs.count
 	GlobalVariables.player_weapon = weapon.count
-	get_tree().change_scene(level_to_load)
+	get_tree().change_scene(GlobalVariables.stage_to_load)
