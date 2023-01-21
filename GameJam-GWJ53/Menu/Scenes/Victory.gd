@@ -17,4 +17,14 @@ func _ready():
 func time_calculator():
 	minutes = GlobalVariables.time_spent / 60
 	seconds = GlobalVariables.time_spent % 60
+	if len(str(seconds)) < 2:
+		seconds = "0" + str(seconds)
 	
+
+
+func _on_Return_pressed():
+	get_tree().change_scene("res://Menu/Scenes/MainMenu.tscn")
+
+
+func _on_Replay_pressed():
+	get_tree().change_scene("res://World/BodyPartsSelection.tscn")

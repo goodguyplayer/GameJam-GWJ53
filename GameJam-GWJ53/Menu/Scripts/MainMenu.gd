@@ -34,4 +34,5 @@ func _on_Quit_pressed():
 
 
 func _on_Tutorial_pressed():
+	GlobalVariables.stage_to_load = "res://World/Tutorial.tscn"
 	get_tree().change_scene("res://World/TutorialIntro.tscn")

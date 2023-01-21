@@ -153,3 +153,6 @@ margin_left = 484.0
 margin_right = 655.0
 margin_bottom = 40.0
 text = "Test a new loadout, virus"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Margin-Buttons/HBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Margin-Buttons/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]
