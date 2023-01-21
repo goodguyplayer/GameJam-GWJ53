@@ -27,7 +27,7 @@ signal textbox_end(title)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_textbox()
-	queue_text("Assistance required in sector 3-C")
+	queue_text("Assistance required in sector 3-C, core room")
 	
 	
 func _process(delta):
