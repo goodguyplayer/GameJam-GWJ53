@@ -13,6 +13,9 @@ var player_max_heat = 0 setget set_player_max_heat
 
 var stage_to_load = ""
 
+var time_spent = 0
+var enemies_killed = 0
+
 signal player_health_changed(value)
 signal player_health_max_changed(value)
 signal player_heat_changed(value)

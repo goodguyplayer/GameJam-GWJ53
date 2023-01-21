@@ -38,6 +38,7 @@ func set_health(value):
 	emit_signal("health_changed", health)
 	GlobalSignals.emit_signal("player_health_changed", health)
 	if health <= 0:
+		GlobalSignals.emit_signal("player_destroyed")
 		emit_signal("no_health")
 		
 
