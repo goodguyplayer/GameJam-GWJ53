@@ -7,19 +7,21 @@ onready var head = get_node("Head")
 onready var torso = get_node("Torso")
 onready var legs = get_node("Legs")
 onready var weapon = get_node("Weapon")
+onready var health_bar = get_node("ProgressBar")
 
 
 export (int) var head_option = 0
 export (int) var torso_option = 0
 export (int) var legs_option = 0
 export (int) var weapon_option = 0
-
+export (bool) var turn_or_not = true 
 
 export (float) var turndelay = 3
 
 
 var left_right : bool = true # Right - True, left - False
-var is_shooting : bool = false 
+var is_shooting : bool = false
+
 
 
 func _ready():
@@ -28,11 +30,14 @@ func _ready():
 	torso.load_torso(torso_option)
 	legs.load_legs(legs_option)
 	weapon.load_weapon(weapon_option)
-	timerturn.start(turndelay)
-	timerturn.connect("timeout", self, "_on_timeout_turn")
+	if turn_or_not:
+		timerturn.start(turndelay)
+		timerturn.connect("timeout", self, "_on_timeout_turn")
 	head.connect("limb_hit", self, "_on_limb_hit")
 	torso.connect("limb_hit", self, "_on_limb_hit")
 	legs.connect("limb_hit", self, "_on_limb_hit")
+	health_bar.max_value = enemystats.health
+	health_bar.value = enemystats.health
 	
 
 func _physics_process(delta):
@@ -53,6 +58,8 @@ func _on_TriggerboxEye_body_entered(body):
 
 
 func _on_limb_hit():
+	health_bar.visible = true
 	enemystats.health -= 10
+	health_bar.value = enemystats.health
 	
 	
