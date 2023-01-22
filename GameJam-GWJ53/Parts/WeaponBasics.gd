@@ -13,6 +13,10 @@ onready var is_shooting = false
 var weapons = [
 	"res://Parts/Weapon/Weapon0.tscn",
 	"res://Parts/Weapon/Weapon1.tscn",
+	"res://Parts/Weapon/Weapon2.tscn",
+	"res://Parts/Weapon/Weapon3.tscn",
+	"res://Parts/Weapon/Weapon4.tscn",
+	"res://Parts/Weapon/Weapon5.tscn",
 ]
 
 

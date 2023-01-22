@@ -4,7 +4,9 @@ var legs = [
 	("res://Parts/Legs/Legs0.tscn"),
 	("res://Parts/Legs/Legs1.tscn"),
 	("res://Parts/Legs/Legs2.tscn"),
-	
+	("res://Parts/Legs/Legs3.tscn"),
+	("res://Parts/Legs/Legs4.tscn"),
+	("res://Parts/Legs/Legs5.tscn"),
 ]
 
 var stats

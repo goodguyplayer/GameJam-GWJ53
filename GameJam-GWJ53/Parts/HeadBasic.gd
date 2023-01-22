@@ -4,6 +4,9 @@ var heads = [
 	("res://Parts/Head/Head0.tscn"),
 	("res://Parts/Head/Head1.tscn"),
 	("res://Parts/Head/Head2.tscn"),
+	("res://Parts/Head/Head3.tscn"),
+	("res://Parts/Head/Head4.tscn"),
+	("res://Parts/Head/Head5.tscn"),
 	
 ]
 

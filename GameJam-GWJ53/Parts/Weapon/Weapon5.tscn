@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Parts/WeaponStats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Parts/Weapon/Weapon0.png" type="Texture" id=2]
+[ext_resource path="res://Parts/Weapon/Weapon0.gd" type="Script" id=3]
+
+[node name="Sprite" type="Sprite"]
+position = Vector2( 1, -1 )
+scale = Vector2( 0.59375, 0.25 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="BulletOrigin" type="Position2D" parent="."]
+position = Vector2( 38.4, 4 )
+
+[node name="WeaponStats" parent="." instance=ExtResource( 1 )]
+shoot_delay = 0.01
+part_name = "Eternal fire"
+part_description = "No delay between bullets. Should melt you by accident."

@@ -2,6 +2,10 @@ extends Node2D
 
 var torsos = [
 	preload("res://Parts/Torso/Torso0.tscn"),
+	preload("res://Parts/Torso/Torso1.tscn"),
+	preload("res://Parts/Torso/Torso2.tscn"),
+	preload("res://Parts/Torso/Torso3.tscn"),
+	preload("res://Parts/Torso/Torso4.tscn"),
 	
 ]
 
