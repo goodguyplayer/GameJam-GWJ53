@@ -62,6 +62,7 @@ func _on_limb_hit():
 	health_bar.visible = true
 	enemystats.health -= 10
 	health_bar.value = enemystats.health
-	hitsound.play()
+	if GlobalVariables.sounds_allowed:
+		hitsound.play()
 	
 	

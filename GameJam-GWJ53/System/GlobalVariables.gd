@@ -16,6 +16,8 @@ var stage_to_load = ""
 var time_spent = 0
 var enemies_killed = 0
 
+var sounds_allowed = true
+
 signal player_health_changed(value)
 signal player_health_max_changed(value)
 signal player_heat_changed(value)

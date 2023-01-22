@@ -19,6 +19,8 @@ func _ready():
 	random.randomize()
 	health_bar.max_value = health
 	health_bar.value = health
+	if GlobalVariables.sounds_allowed:
+		$Timer.connect("timeout", self, "_on_Timer_timeout")
 	
 
 func _on_Hurtbox_area_entered(_area):

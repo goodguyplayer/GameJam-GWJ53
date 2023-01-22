@@ -108,7 +108,8 @@ func _physics_process(delta):
 
 func _on_limb_hit():
 	playerstats.health -= 10
-	hitsound.play()
+	if GlobalVariables.sounds_allowed:
+		hitsound.play()
 
 
 func _on_Weapon_gun_fired():
@@ -125,4 +126,5 @@ func _on_HeatTimer_timeout():
 func heat_damage():
 	playerstats.heat = 0
 	playerstats.health -= 30
-	heatsound.play()
+	if GlobalVariables.sounds_allowed:
+		heatsound.play()

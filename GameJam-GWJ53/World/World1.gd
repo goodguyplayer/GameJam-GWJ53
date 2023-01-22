@@ -23,7 +23,8 @@ func _ready():
 	GlobalSignals.connect("core_destroyed", self, "_on_core_destroyed")
 	GlobalSignals.connect("player_destroyed", self, "_on_player_destroyed")
 	timer.connect("timeout", self, "_update_time")
-	sound_1.play()
+	if GlobalVariables.sounds_allowed:
+		sound_1.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -71,9 +72,11 @@ func _update_time():
 
 func _on_Audio2_area_entered(area):
 	sound_2_trigger.queue_free()
-	sound_2.play()
+	if GlobalVariables.sounds_allowed:
+		sound_2.play()
 
 
 func _on_Audio3_area_entered(area):
 	sound_3_trigger.queue_free()
-	sound_3.play()
+	if GlobalVariables.sounds_allowed:
+		sound_3.play()
