@@ -1,27 +1,42 @@
-- name: Godot Export
-  # You may pin to the exact commit or the version.
-  # uses: firebelley/godot-export@d03f11b80e6d10d7c553360fc00779d35310f7a0
-  uses: firebelley/godot-export@v4.6.0
-  with:
-    # The download url of the Linux Headless Godot executable.
-    godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5/rc5/Godot_v3.5-rc5_linux_headless.64.zip
-    # The url of the export templates corresponding to the Godot executable version.
-    godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.5/rc5/Godot_v3.5-rc5_export_templates.tpz
-    # The path relative to the root of the git repository that contains the "project.godot" file.
-    relative_project_path: ./
-    # If "true", exported files will be archived into a ".zip" file.
-    archive_output: true # optional
-    # If "true", files that are archived will be placed in a root folder within the archive.
-    archive_root_folder: # optional
-    # If provided, exports will be moved to this directory relative to the root of the Git repository. This setting is overridden by "use_preset_export_path".
-    relative_export_path: # optional, default is 
-    # If set to true, exports will be moved to directory defined in "export_presets.cfg" relative to "relative_project_path". Prioritized over "relative_export_path".
-    use_preset_export_path: # optional
-    # The absolute path to the wine binary. If specified, Godot will use this to run rcedit to update Windows exe icons.
-    wine_path: # optional, default is 
-    # If "true" Godot will export in debug mode.
-    export_debug: # optional
-    # If "true" the --verbose flag will be added when exporting Godot projects.
-    verbose: # optional
-    # Build using godot 4 executable (NOTE: `godot_executable_download_url` and `godot_export_templates_download_url` still need to be configured to download the correct version.
-    use_godot_4: false
+on: push
+
+jobs:
+  DefineVersion:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - id: version
+        run: echo "version=$(date +%Y%m%d).$GITHUB_RUN_NUMBER" >> $GITHUB_OUTPUT
+        
+  BuildAndExport:
+    needs: [DefineVersion]
+    runs-on: ubuntu-latest
+    name: Export Game
+    
+    steps:
+    - name: Godot Export
+      uses: firebelley/godot-export@v4.6.0
+      with:
+        # The download url of the Linux Headless Godot executable.
+        godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5/rc5/Godot_v3.5-rc5_linux_headless.64.zip
+        # The url of the export templates corresponding to the Godot executable version.
+        godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.5/rc5/Godot_v3.5-rc5_export_templates.tpz
+        # The path relative to the root of the git repository that contains the "project.godot" file.
+        relative_project_path: ./
+        # If "true", exported files will be archived into a ".zip" file.
+        archive_output: true # optional
+        # If "true", files that are archived will be placed in a root folder within the archive.
+        archive_root_folder: false
+        # If provided, exports will be moved to this directory relative to the root of the Git repository. This setting is overridden by "use_preset_export_path".
+        relative_export_path: false
+        # If set to true, exports will be moved to directory defined in "export_presets.cfg" relative to "relative_project_path". Prioritized over "relative_export_path".
+        use_preset_export_path: false
+        # The absolute path to the wine binary. If specified, Godot will use this to run rcedit to update Windows exe icons.
+        wine_path: false
+        # If "true" Godot will export in debug mode.
+        export_debug: false
+        # If "true" the --verbose flag will be added when exporting Godot projects.
+        verbose: false
+        # Build using godot 4 executable (NOTE: `godot_executable_download_url` and `godot_export_templates_download_url` still need to be configured to download the correct version.
+        use_godot_4: false
