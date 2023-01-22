@@ -29,7 +29,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_pressed("ui_quit_world"):
+		get_tree().change_scene("res://Menu/Scenes/MainMenu.tscn")
 
 
 func _on_PlotHoming_area_entered(area):

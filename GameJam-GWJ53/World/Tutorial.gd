@@ -13,11 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	camera.global_position.y = 8
-
-
-func _on_ExitGate_area_entered(area):
-	get_tree().change_scene("res://Menu/Scenes/MainMenu.tscn")
+	if Input.is_action_pressed("ui_quit_world"):
+		get_tree().change_scene("res://Menu/Scenes/MainMenu.tscn")
 
 
 func _on_EnemyGuide_area_entered(area):

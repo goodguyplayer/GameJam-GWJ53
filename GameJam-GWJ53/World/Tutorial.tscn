@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tiles/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Tutorial.gd" type="Script" id=4]
-[ext_resource path="res://World/Exit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Triggerboxes/Triggerbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/TextboxIntroTutorial.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/HealthHeat.tscn" type="PackedScene" id=8]
@@ -23,9 +22,6 @@ script = ExtResource( 4 )
 position = Vector2( 1237, 298.5 )
 scale = Vector2( 8.23333, 2.05102 )
 texture = ExtResource( 9 )
-
-[node name="ExitGate" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2400, 520 )
 
 [node name="EnemyGuide" parent="." instance=ExtResource( 6 )]
 position = Vector2( 792, 376 )
@@ -489,7 +485,6 @@ editor_draw_limits = true
 
 [node name="IntroJump" parent="." instance=ExtResource( 7 )]
 
-[connection signal="area_entered" from="ExitGate" to="." method="_on_ExitGate_area_entered"]
 [connection signal="area_entered" from="EnemyGuide" to="." method="_on_EnemyGuide_area_entered"]
 [connection signal="area_entered" from="ExitGuide" to="." method="_on_ExitGuide_area_entered"]
 
