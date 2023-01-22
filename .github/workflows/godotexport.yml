@@ -1,4 +1,4 @@
-    use_godot_4: # optional- name: Godot Export
+- name: Godot Export
   # You may pin to the exact commit or the version.
   # uses: firebelley/godot-export@d03f11b80e6d10d7c553360fc00779d35310f7a0
   uses: firebelley/godot-export@v4.6.0
@@ -24,4 +24,4 @@
     # If "true" the --verbose flag will be added when exporting Godot projects.
     verbose: # optional
     # Build using godot 4 executable (NOTE: `godot_executable_download_url` and `godot_export_templates_download_url` still need to be configured to download the correct version.
-    use_godot_4: # optional
+    use_godot_4: false
