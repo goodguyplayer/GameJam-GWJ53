@@ -4,19 +4,16 @@ on:
       - "v*"
 
 jobs:
-  # job id, can be anything
   export_game:
     permissions: write-all
     runs-on: ubuntu-latest
     # Job name, can be anything
     name: Export Game
     steps:
-      # Always include the checkout step so that 
-      # your project is available for Godot to export
+    
     - name: checkout
       uses: actions/checkout@v3.0.2
   
-    # Automatically stores the tag name for later use
     - name: get tag from version
       id: tag_version
       run: |
@@ -24,17 +21,13 @@ jobs:
   
     - name: export game
       id: export
-      # Use latest version (see releases for all versions)
       uses: firebelley/godot-export@v4.6.0
       with:
-        # Defining all the required inputs
         godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.4.4-stable/Godot_v3.4.4-stable_linux_headless.64.zip
         godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/3.4.4-stable/Godot_v3.4.4-stable_export_templates.tpz
         relative_project_path: ./
         archive_output: true
-
-      # This release action has worked well for me. However, you can most likely use any release action of your choosing.
-      # https://github.com/ncipollo/release-action
+ 
     - name: create release
       uses: ncipollo/release-action@v1.11.2
       with:
