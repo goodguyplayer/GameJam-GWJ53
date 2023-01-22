@@ -27,7 +27,8 @@ func _on_Options_pressed():
 
 
 func _on_Credits_pressed():
-	pass # Replace with function body.
+	var credits = load("res://Menu/Scenes/Credits.tscn").instance()
+	get_tree().current_scene.add_child(credits)
 
 
 func _on_Quit_pressed():
