@@ -6,7 +6,7 @@ on:
 jobs:
   # job id, can be anything
   export_game:
-    # Always use ubuntu-latest for this action
+    permissions: write-all
     runs-on: ubuntu-latest
     # Job name, can be anything
     name: Export Game
