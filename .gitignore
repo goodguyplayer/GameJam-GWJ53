@@ -5,3 +5,5 @@ export.cfg
 
 # Mono-specific ignores
 .mono/
+
+Builds/
