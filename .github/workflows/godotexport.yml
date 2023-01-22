@@ -2,42 +2,41 @@ on:
     workflow_dispatch:
 
 jobs:
-  DefineVersion:
+  # job id, can be anything
+  export_game:
+    # Always use ubuntu-latest for this action
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.version }}
-    steps:
-      - id: version
-        run: echo "version=$(date +%Y%m%d).$GITHUB_RUN_NUMBER" >> $GITHUB_OUTPUT
-        
-  BuildAndExport:
-    needs: [DefineVersion]
-    runs-on: ubuntu-latest
+    # Job name, can be anything
     name: Export Game
-    
     steps:
-    - name: Godot Export
+      # Always include the checkout step so that 
+      # your project is available for Godot to export
+    - name: checkout
+      uses: actions/checkout@v3.0.2
+  
+    # Automatically stores the tag name for later use
+    - name: get tag from version
+      id: tag_version
+      run: |
+          echo "TAG_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+  
+    - name: export game
+      id: export
+      # Use latest version (see releases for all versions)
       uses: firebelley/godot-export@v4.6.0
       with:
-        # The download url of the Linux Headless Godot executable.
-        godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5/rc5/Godot_v3.5-rc5_linux_headless.64.zip
-        # The url of the export templates corresponding to the Godot executable version.
-        godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.5/rc5/Godot_v3.5-rc5_export_templates.tpz
-        # The path relative to the root of the git repository that contains the "project.godot" file.
+        # Defining all the required inputs
+        godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.4.4-stable/Godot_v3.4.4-stable_linux_headless.64.zip
+        godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/3.4.4-stable/Godot_v3.4.4-stable_export_templates.tpz
         relative_project_path: ./
-        # If "true", exported files will be archived into a ".zip" file.
-        archive_output: true # optional
-        # If "true", files that are archived will be placed in a root folder within the archive.
-        archive_root_folder: false
-        # If provided, exports will be moved to this directory relative to the root of the Git repository. This setting is overridden by "use_preset_export_path".
-        relative_export_path: false
-        # If set to true, exports will be moved to directory defined in "export_presets.cfg" relative to "relative_project_path". Prioritized over "relative_export_path".
-        use_preset_export_path: false
-        # The absolute path to the wine binary. If specified, Godot will use this to run rcedit to update Windows exe icons.
-        wine_path: false
-        # If "true" Godot will export in debug mode.
-        export_debug: false
-        # If "true" the --verbose flag will be added when exporting Godot projects.
-        verbose: false
-        # Build using godot 4 executable (NOTE: `godot_executable_download_url` and `godot_export_templates_download_url` still need to be configured to download the correct version.
-        use_godot_4: false
+        archive_output: true
+
+      # This release action has worked well for me. However, you can most likely use any release action of your choosing.
+      # https://github.com/ncipollo/release-action
+    - name: create release
+      uses: ncipollo/release-action@v1.11.2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        generateReleaseNotes: true
+        tag: v${{ steps.tag_version.outputs.TAG_VERSION }} # Note that the 'v' in front was necessary to get this action attach artifacts to the tag
+        artifacts: ${{ steps.export.outputs.archive_directory }}/*
