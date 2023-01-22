@@ -1,5 +1,7 @@
 on: 
-    workflow_dispatch:
+  push:
+    tags:
+      - "v*"
 
 jobs:
   # job id, can be anything
@@ -35,3 +37,8 @@ jobs:
       # https://github.com/ncipollo/release-action
     - name: create release
       uses: ncipollo/release-action@v1.12.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        generateReleaseNotes: true
+        tag: v${{ steps.tag_version.outputs.TAG_VERSION }}
+        artifacts: ${{ steps.export.outputs.archive_directory }}/*
