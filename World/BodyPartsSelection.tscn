@@ -99,16 +99,16 @@ rect_min_size = Vector2( 50, 40 )
 alignment = 1
 
 [node name="Return" type="Button" parent="MarginContainer/VBoxContainer2/Buttons"]
-margin_left = 388.0
-margin_right = 500.0
+margin_left = 394.0
+margin_right = 506.0
 margin_bottom = 40.0
 text = "Return to menu"
 
 [node name="Accept" type="Button" parent="MarginContainer/VBoxContainer2/Buttons"]
-margin_left = 504.0
-margin_right = 620.0
+margin_left = 510.0
+margin_right = 614.0
 margin_bottom = 40.0
-text = "Assemble mech"
+text = "Assemble suit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Buttons/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Buttons/Accept" to="." method="_on_Accept_pressed"]
