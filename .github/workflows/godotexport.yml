@@ -34,9 +34,4 @@ jobs:
       # This release action has worked well for me. However, you can most likely use any release action of your choosing.
       # https://github.com/ncipollo/release-action
     - name: create release
-      uses: ncipollo/release-action@v1.11.2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        generateReleaseNotes: true
-        tag: v${{ steps.tag_version.outputs.TAG_VERSION }} # Note that the 'v' in front was necessary to get this action attach artifacts to the tag
-        artifacts: ${{ steps.export.outputs.archive_directory }}/*
+      uses: ncipollo/release-action@v1.12.0
