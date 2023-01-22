@@ -13,18 +13,6 @@
 [ext_resource path="res://Music/dial-up-modem-01-Split2.wav" type="AudioStream" id=11]
 [ext_resource path="res://UI/battlenet.ttf" type="DynamicFontData" id=12]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96, 92.5 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 96, 266 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 32, 172 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 96, 268 )
-
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 4
@@ -40,6 +28,18 @@ font_data = ExtResource( 12 )
 [sub_resource type="DynamicFont" id=7]
 size = 70
 font_data = ExtResource( 12 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 96, 92.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 96, 266 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 172 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 96, 268 )
 
 [node name="World1" type="Node2D"]
 script = ExtResource( 6 )
@@ -1190,6 +1190,53 @@ turndelay = 6.0
 visible = false
 position = Vector2( 6848, 320 )
 
+[node name="Panel" type="Panel" parent="."]
+margin_left = 1856.0
+margin_top = 48.0
+margin_right = 2112.0
+margin_bottom = 192.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Panel"]
+margin_right = 256.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 6 )
+text = "3-C"
+align = 1
+valign = 1
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 4544.0
+margin_top = 64.0
+margin_right = 4800.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Panel2"]
+margin_right = 256.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 7 )
+text = "Destroy the core"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Panel3" type="Panel" parent="."]
+margin_left = 6268.0
+margin_top = 75.0
+margin_right = 6524.0
+margin_bottom = 219.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Panel3"]
+margin_right = 256.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 7 )
+text = "Destroy it"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 216, 448 )
 
@@ -1271,37 +1318,6 @@ stream = ExtResource( 10 )
 [node name="Sound3" type="AudioStreamPlayer2D" parent="Sounds"]
 position = Vector2( 4960, 336 )
 stream = ExtResource( 11 )
-
-[node name="Panel" type="Panel" parent="."]
-margin_left = 1856.0
-margin_top = 48.0
-margin_right = 2112.0
-margin_bottom = 192.0
-custom_styles/panel = SubResource( 5 )
-
-[node name="Label" type="Label" parent="Panel"]
-margin_right = 256.0
-margin_bottom = 144.0
-custom_fonts/font = SubResource( 6 )
-text = "3-C"
-align = 1
-valign = 1
-
-[node name="Panel2" type="Panel" parent="."]
-margin_left = 4544.0
-margin_top = 64.0
-margin_right = 4800.0
-margin_bottom = 208.0
-custom_styles/panel = SubResource( 5 )
-
-[node name="Label" type="Label" parent="Panel2"]
-margin_right = 256.0
-margin_bottom = 144.0
-custom_fonts/font = SubResource( 7 )
-text = "Destroy the core"
-align = 1
-valign = 1
-autowrap = true
 
 [connection signal="area_entered" from="Plot/PlotHoming" to="." method="_on_PlotHoming_area_entered"]
 [connection signal="area_entered" from="Plot/PlotSector" to="." method="_on_PlotSector_area_entered"]

@@ -12,6 +12,7 @@ onready var escape = get_node("Escape/MarginContainer/Label")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+# warning-ignore:return_value_discarded
 	GlobalSignals.connect("player_destroyed", self, "_on_player_destroyed")
 	jump.text = 'Press "%s" To jump' % InputMap.get_action_list("ui_up")[0].as_text()
 	fire.text = 'Press "%s" To fire' % InputMap.get_action_list("ui_shoot")[0].as_text()
@@ -21,6 +22,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_pressed("ui_quit_world"):
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Menu/Scenes/MainMenu.tscn")
 
 
@@ -37,4 +39,5 @@ func _on_ExitGuide_area_entered(_area):
 
 
 func _on_player_destroyed():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Menu/Scenes/Defeat.tscn")
