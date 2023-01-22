@@ -28,7 +28,7 @@ signal textbox_end(title)
 func _ready():
 	hide_textbox()
 	queue_text("System's online. Welcome to the training room.")
-	queue_text("Let's test your mech functions. Try jumping over the following obstacles.")
+	queue_text("Let's test your suit functions. Try jumping over the following obstacles.")
 	
 	
 func _process(delta):

@@ -28,7 +28,7 @@ signal textbox_end(title)
 func _ready():
 	hide_textbox()
 	queue_text("Congratulations.")
-	queue_text("Step on the gate to leave the World Within. Your mission starts when you're ready.")
+	queue_text("Press your exit button to leave the practice world. Your mission starts when you're ready.")
 	
 	
 func _process(delta):
